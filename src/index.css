@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #F7F5EF;
+  --surface: #FFFFFF;
+  --primary: #26364A;
+  --secondary: #829A88;
+  --accent: #E9B95C;
+  --terracotta: #D58C75;
+  --text: #292C31;
+  --muted: #898D91;
+  --parchment: #F0EAD6;
+}
+
+body {
+  margin: 0;
+  background-color: var(--background);
+  color: var(--text);
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+
+h1, h2, h3, .font-serif {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+/* Custom gentle scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D8D2C2;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #BFB8A4;
+}
+
+/* Glassmorphism & Card styles */
+.card-parchment {
+  background: #FFFFFF;
+  border: 1px solid #ECE7D8;
+  box-shadow: 0 4px 16px -2px rgba(38, 54, 74, 0.05);
+  border-radius: 1.25rem;
+}
+
+.card-warm {
+  background: #FAF8F2;
+  border: 1px solid #EAE3D2;
+}
+
+.gold-gradient {
+  background: linear-gradient(135deg, #E9B95C 0%, #D49D39 100%);
+}
+
+.navy-gradient {
+  background: linear-gradient(135deg, #26364A 0%, #1A2534 100%);
+}
+
+.sage-gradient {
+  background: linear-gradient(135deg, #829A88 0%, #68806E 100%);
+}
+
+/* Prevent layout shift on iOS safe areas */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
