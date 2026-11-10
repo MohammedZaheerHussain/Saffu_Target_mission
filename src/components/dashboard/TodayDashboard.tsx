@@ -24,6 +24,7 @@ interface TodayDashboardProps {
   onOpenAddTask: () => void;
   onNavigate: (tab: 'today' | 'planner' | 'questions' | 'xp' | 'progress' | 'settings') => void;
   onOpenMockExam: () => void;
+  onOpenAICoach: () => void;
 }
 
 export const TodayDashboard: React.FC<TodayDashboardProps> = ({
@@ -32,6 +33,7 @@ export const TodayDashboard: React.FC<TodayDashboardProps> = ({
   onOpenAddTask,
   onNavigate,
   onOpenMockExam,
+  onOpenAICoach,
 }) => {
   const { state, todayDateStr, totalXP, todayXP, levelInfo, toggleTaskCompletion } = useApp();
 
@@ -153,7 +155,7 @@ export const TodayDashboard: React.FC<TodayDashboardProps> = ({
       {/* ---------------- B & C: EXAM COUNTDOWN & XP CARDS ---------------- */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {/* Next Examination Card */}
-        <div className="card-parchment p-5 flex flex-col justify-between">
+        <div className="card-clay-peach p-5 flex flex-col justify-between">
           <div className="flex items-start justify-between gap-3">
             <div>
               <span className="text-[11px] font-semibold text-muted uppercase tracking-wider">
@@ -168,7 +170,7 @@ export const TodayDashboard: React.FC<TodayDashboardProps> = ({
             </div>
             {countdown && (
               <div className="text-right shrink-0">
-                <span className="text-2xl font-serif font-extrabold text-amber-700">
+                <span className="text-3xl font-serif font-extrabold text-amber-800 animate-float block">
                   {countdown.days}
                 </span>
                 <span className="block text-[10px] font-semibold text-muted uppercase">
@@ -190,7 +192,7 @@ export const TodayDashboard: React.FC<TodayDashboardProps> = ({
         </div>
 
         {/* XP Progress Card */}
-        <div className="card-parchment p-5 flex flex-col justify-between">
+        <div className="card-clay-amber p-5 flex flex-col justify-between">
           <div>
             <div className="flex items-center justify-between">
               <div>
@@ -627,6 +629,34 @@ export const TodayDashboard: React.FC<TodayDashboardProps> = ({
               <div>
                 <h5 className="text-xs font-bold text-primary">Syllabus Editor</h5>
                 <p className="text-[10px] text-muted mt-0.5">Paste or edit units</p>
+              </div>
+            </button>
+
+            {/* AI Literary Examiner & Strategy Coach Banner Action */}
+            <button
+              onClick={onOpenAICoach}
+              className="p-3.5 rounded-2xl bg-gradient-to-br from-amber-50 to-orange-50 hover:from-amber-100 hover:to-orange-100 border border-amber-200 hover:border-amber-300 transition-all text-left flex flex-col justify-between group shadow-sm col-span-2 sm:col-span-3"
+            >
+              <div className="flex items-center gap-3 w-full">
+                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-500 to-orange-500 text-white flex items-center justify-center group-hover:scale-105 transition-transform shadow-md shrink-0">
+                  <Sparkles className="w-5 h-5 fill-amber-200" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-1.5 flex-wrap">
+                    <h5 className="text-xs font-bold text-primary">
+                      AI Literary Examiner & Strategy Coach
+                    </h5>
+                    <span className="text-[9px] font-bold px-1.5 py-0.5 rounded-full bg-accent/25 text-amber-900 border border-accent/40">
+                      THIRUVALLUVAR INSIGHTS
+                    </span>
+                  </div>
+                  <p className="text-[11px] text-charcoal/80 mt-0.5">
+                    Evaluator scoring formulas, golden quotations arsenal & zero-to-hero catchup protocol
+                  </p>
+                </div>
+                <span className="text-muted group-hover:text-primary transition-colors text-sm font-bold">
+                  Explore →
+                </span>
               </div>
             </button>
           </div>

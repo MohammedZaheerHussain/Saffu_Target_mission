@@ -19,11 +19,11 @@ export const Header: React.FC<HeaderProps> = ({ onOpenTimer, onOpenShare }) => {
   const countdown = nextExam ? calculateExamCountdown(nextExam.date) : null;
 
   return (
-    <header className="sticky top-0 z-30 bg-[#F7F5EF]/90 backdrop-blur-md border-b border-[#ECE7D8] px-4 md:px-8 py-3 transition-all">
+    <header className="sticky top-0 z-30 glass-warm border-b border-[#ECE7D8]/80 px-4 md:px-8 py-3 transition-all shadow-sm">
       <div className="max-w-7xl mx-auto flex items-center justify-between gap-3">
         {/* Left: Brand Identity */}
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-primary text-amber-300 flex items-center justify-center shadow-soft shrink-0">
+          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-primary-light text-amber-300 flex items-center justify-center shadow-soft-md shrink-0">
             <BookOpen className="w-5 h-5 text-accent" />
           </div>
           <div>

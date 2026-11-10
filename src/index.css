@@ -3,15 +3,20 @@
 @tailwind utilities;
 
 :root {
-  --background: #F7F5EF;
+  --background: #FDFBF7;
   --surface: #FFFFFF;
+  --surface-clay: #FFFDF9;
   --primary: #26364A;
   --secondary: #829A88;
   --accent: #E9B95C;
   --terracotta: #D58C75;
   --text: #292C31;
   --muted: #898D91;
-  --parchment: #F0EAD6;
+  --parchment: #F4EFE6;
+  --soft-peach: #FFF5EE;
+  --soft-sage: #F0F6F2;
+  --soft-amber: #FFF9ED;
+  --soft-rose: #FFF0ED;
 }
 
 body {
@@ -20,6 +25,11 @@ body {
   color: var(--text);
   font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   -webkit-tap-highlight-color: transparent;
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(245, 237, 220, 0.45) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(226, 240, 230, 0.45) 0%, transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(254, 243, 235, 0.3) 0%, transparent 60%);
+  background-attachment: fixed;
 }
 
 h1, h2, h3, .font-serif {
@@ -37,25 +47,59 @@ h1, h2, h3, .font-serif {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #D8D2C2;
+  background: #E2DBD0;
   border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #BFB8A4;
+  background: #CFC5B6;
 }
 
-/* Glassmorphism & Card styles */
+/* Claymorphic and warm editorial card styles */
 .card-parchment {
   background: #FFFFFF;
   border: 1px solid #ECE7D8;
-  box-shadow: 0 4px 16px -2px rgba(38, 54, 74, 0.05);
-  border-radius: 1.25rem;
+  box-shadow: 0 4px 20px -2px rgba(38, 54, 74, 0.04), 0 1px 3px rgba(0, 0, 0, 0.02);
+  border-radius: 1.5rem;
 }
 
-.card-warm {
-  background: #FAF8F2;
-  border: 1px solid #EAE3D2;
+.card-clay {
+  background: #FFFFFF;
+  border: 1px solid #F0ECE1;
+  box-shadow: 
+    0 10px 30px -5px rgba(220, 205, 185, 0.3),
+    0 2px 6px -1px rgba(0, 0, 0, 0.02),
+    inset 0 1px 1px rgba(255, 255, 255, 0.9);
+  border-radius: 1.75rem;
+}
+
+.card-clay-peach {
+  background: linear-gradient(145deg, #FFF8F3 0%, #FFF3EC 100%);
+  border: 1px solid #FCE5DA;
+  box-shadow: 0 8px 24px -4px rgba(235, 195, 175, 0.25), inset 0 2px 4px rgba(255, 255, 255, 0.8);
+  border-radius: 1.75rem;
+}
+
+.card-clay-sage {
+  background: linear-gradient(145deg, #F5FAF6 0%, #EDF6EE 100%);
+  border: 1px solid #DFEDE2;
+  box-shadow: 0 8px 24px -4px rgba(185, 215, 195, 0.25), inset 0 2px 4px rgba(255, 255, 255, 0.8);
+  border-radius: 1.75rem;
+}
+
+.card-clay-amber {
+  background: linear-gradient(145deg, #FFFBF2 0%, #FFF6E0 100%);
+  border: 1px solid #FBECC7;
+  box-shadow: 0 8px 24px -4px rgba(235, 210, 160, 0.25), inset 0 2px 4px rgba(255, 255, 255, 0.8);
+  border-radius: 1.75rem;
+}
+
+.card-notebook {
+  background: #FFFFFF;
+  border: 1px solid #EAE4D5;
+  box-shadow: 0 10px 25px -5px rgba(190, 175, 150, 0.2);
+  border-radius: 1.5rem;
+  position: relative;
 }
 
 .gold-gradient {
@@ -70,10 +114,112 @@ h1, h2, h3, .font-serif {
   background: linear-gradient(135deg, #829A88 0%, #68806E 100%);
 }
 
+.peach-gradient {
+  background: linear-gradient(135deg, #F8C3B3 0%, #EAA28E 100%);
+}
+
+/* Floating animation for delightful clay widgets */
+@keyframes float-gentle {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+.animate-float {
+  animation: float-gentle 4s ease-in-out infinite;
+}
+
+@keyframes pulse-soft {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.02);
+  }
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 3s ease-in-out infinite;
+}
+
+/* Fade-in entrance animation */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.4s ease-out;
+}
+
+/* Shimmer loading effect for placeholder states */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, #F0EAD6 25%, #FAF6EC 50%, #F0EAD6 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Soft bounce for achievement unlocks */
+@keyframes bounce-in {
+  0% { transform: scale(0.5); opacity: 0; }
+  60% { transform: scale(1.08); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.animate-bounce-in {
+  animation: bounce-in 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Glass morphism utility for overlays */
+.glass-warm {
+  background: rgba(253, 251, 247, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(236, 231, 216, 0.6);
+}
+
+/* Stationery notebook line accent */
+.notebook-lines {
+  background-image: repeating-linear-gradient(
+    transparent, transparent 31px, #ECE7D8 31px, #ECE7D8 32px
+  );
+}
+
+/* Warm glow for active/hover states */
+.glow-accent {
+  box-shadow: 0 0 0 4px rgba(233, 185, 92, 0.15);
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .animate-float,
+  .animate-pulse-soft,
+  .animate-fade-in,
+  .animate-shimmer,
+  .animate-bounce-in {
+    animation: none !important;
+  }
+}
+
 /* Prevent layout shift on iOS safe areas */
 @supports (padding-bottom: env(safe-area-inset-bottom)) {
   .pb-safe {
     padding-bottom: env(safe-area-inset-bottom);
   }
 }
-

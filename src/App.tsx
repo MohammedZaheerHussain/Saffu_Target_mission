@@ -8,6 +8,7 @@ import { FocusTimerModal } from './components/timer/FocusTimerModal';
 import { ShareModal } from './components/common/ShareModal';
 import { AddTaskModal } from './components/planner/AddTaskModal';
 import { MockExamModal } from './components/mock/MockExamModal';
+import { AICoachDrawer } from './components/dashboard/AICoachDrawer';
 
 // Views
 import { TodayDashboard } from './components/dashboard/TodayDashboard';
@@ -27,6 +28,7 @@ const AppContent: React.FC = () => {
   const [isAddTaskOpen, setIsAddTaskOpen] = useState(false);
   const [addTaskDate, setAddTaskDate] = useState<string | undefined>(undefined);
   const [isMockOpen, setIsMockOpen] = useState(false);
+  const [isAICoachOpen, setIsAICoachOpen] = useState(false);
 
   const handleOpenTimer = (taskId?: string) => {
     setTimerTaskId(taskId);
@@ -64,6 +66,7 @@ const AppContent: React.FC = () => {
               onOpenAddTask={() => handleOpenAddTask()}
               onNavigate={setActiveTab}
               onOpenMockExam={() => setIsMockOpen(true)}
+              onOpenAICoach={() => setIsAICoachOpen(true)}
             />
           )}
 
@@ -112,6 +115,12 @@ const AppContent: React.FC = () => {
       <MockExamModal
         isOpen={isMockOpen}
         onClose={() => setIsMockOpen(false)}
+      />
+
+      {/* AI Literary Examiner & Strategy Coach */}
+      <AICoachDrawer
+        isOpen={isAICoachOpen}
+        onClose={() => setIsAICoachOpen(false)}
       />
 
       {/* Feedback Toasts Container */}
